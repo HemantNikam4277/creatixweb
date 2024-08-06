@@ -5,39 +5,48 @@ import Workflow from "./components/Workflow";
 import Footer from "./components/Footer";
 import Pricing from "./components/Pricing";
 import Testimonials from "./components/Testimonials";
-import { Element } from 'react-scroll';
-import { Slide } from 'react-reveal';
+import { motion } from "framer-motion";
 
 const App = () => {
   return (
     <>
       <Navbar />
       <div className="max-w-7xl mx-auto pt-20 px-6">
-        <Element name="heroSection">
-          <Slide bottom>
-            <HeroSection />
-          </Slide>
-        </Element>
-        <Element name="features">
-          <Slide left>
-            <FeatureSection />
-          </Slide>
-        </Element>
-        <Element name="workflow">
-          <Slide right>
-            <Workflow />
-          </Slide>
-        </Element>
-        <Element name="pricing">
-          <Slide up>
-            <Pricing />
-          </Slide>
-        </Element>
-        <Element name="testimonials">
-          <Slide bottom>
-            <Testimonials />
-          </Slide>
-        </Element>
+        <motion.div
+          initial={{ opacity: 0, y: -100, rotate: -10 }}
+          animate={{ opacity: 1, y: 0, rotate: 0 }}
+          transition={{ duration: 0.7, type: "spring", stiffness: 50 }}
+        >
+          <HeroSection />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: -200, scale: 0.9 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          transition={{ duration: 0.7, type: "spring", stiffness: 70 }}
+        >
+          <FeatureSection />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 200, rotate: 10 }}
+          animate={{ opacity: 1, x: 0, rotate: 0 }}
+          transition={{ duration: 0.7, type: "spring", stiffness: 70 }}
+        >
+          <Workflow />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 0.7, type: "tween", ease: "easeOut" }}
+        >
+          <Pricing />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 100, scale: 1.1 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.7, type: "tween", ease: "easeIn" }}
+        >
+          <Testimonials />
+        </motion.div>
         <Footer />
       </div>
     </>
