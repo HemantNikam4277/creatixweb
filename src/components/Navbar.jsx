@@ -1,6 +1,5 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link as ScrollLink } from 'react-scroll';
 // import logo from "../assets/logo.png";
 import { navItems } from "../constants";
 
@@ -9,6 +8,14 @@ const Navbar = () => {
 
   const toggleNavbar = () => {
     setMobileDrawerOpen(!mobileDrawerOpen);
+  };
+
+  const handleScroll = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      setMobileDrawerOpen(false); // Close the drawer when an item is clicked
+    }
   };
 
   return (
@@ -22,15 +29,12 @@ const Navbar = () => {
           <ul className="hidden lg:flex ml-14 space-x-12">
             {navItems.map((item, index) => (
               <li key={index}>
-                <ScrollLink
-                  to={item.href}
-                  smooth={true}
-                  duration={500}
-                  offset={-70} // Adjust this value if needed
+                <button
+                  onClick={() => handleScroll(item.href)}
                   className="cursor-pointer"
                 >
                   {item.label}
-                </ScrollLink>
+                </button>
               </li>
             ))}
           </ul>
@@ -45,16 +49,12 @@ const Navbar = () => {
             <ul>
               {navItems.map((item, index) => (
                 <li key={index} className="py-4">
-                  <ScrollLink
-                    to={item.href}
-                    smooth={true}
-                    duration={500}
-                    offset={-70} // Adjust this value if needed
+                  <button
+                    onClick={() => handleScroll(item.href)}
                     className="cursor-pointer"
-                    onClick={toggleNavbar} // Close the drawer when an item is clicked
                   >
                     {item.label}
-                  </ScrollLink>
+                  </button>
                 </li>
               ))}
             </ul>
