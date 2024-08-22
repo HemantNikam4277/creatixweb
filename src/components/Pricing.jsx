@@ -2,8 +2,11 @@ import { pricingImages } from "../constants";
 
 const Pricing = () => {
   const handleSeeMoreClick = () => {
-    alert('Want to see my Behance Profile?');
-    window.open("https://www.behance.net/b7362a7b", "_blank");
+    const userChoice = window.confirm('Want to see my Behance Profile?');
+  
+    if (userChoice) {
+      window.open("https://www.behance.net/b7362a7b", "_blank");
+    }
   };
 
   return (

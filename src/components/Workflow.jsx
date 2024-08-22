@@ -9,9 +9,13 @@ import { checklistItems } from "../constants";
 const Workflow = () => {
 
   const handleSeeMoreClick = () => {
-    alert('Want to see my Behance Profile?');
-    window.open("https://www.behance.net/b7362a7b", "_blank");
+    const userChoice = window.confirm('Want to see my Behance Profile?');
+  
+    if (userChoice) {
+      window.open("https://www.behance.net/b7362a7b", "_blank");
+    }
   };
+  
 
   return (
     <div className="relative mt-20 border-b border-neutral-800 min-h-[800px]">
